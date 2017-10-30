@@ -1,14 +1,106 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar transparent>
     <ion-title>
-      Ionic Blank
+      Autoplay In View
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content>
+
+  <autoplay-content>
+
+    <ion-card *ngFor="let card of cards"
+              no-padding>
+
+      <ion-item>
+
+        <ion-avatar item-start>
+          <img [src]="card.avatarSrc">
+        </ion-avatar>
+
+        <h2>{{ card.name }}</h2>
+        <p>{{ card.location }}</p>
+
+      </ion-item>
+
+      <img *ngIf="!card.hasVideo"
+           [src]="card.src" />
+
+      <video *ngIf="card.hasVideo"
+             muted>
+
+        <source [src]="card.src"
+                type="video/mp4">
+
+      </video>
+
+      <ion-card-content>
+        <p>
+          Nullam sed tortor ex. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam
+          dapibus, diam sit amet cursus pellentesque, dolor odio faucibus justo, non ornare ipsum nisl ut sem.
+        </p>
+      </ion-card-content>
+
+      <ion-row class="comment">
+        <ion-col>
+          <strong>
+            Sarah
+          </strong> quisque nibh purus, gravida eget arcu blandit? Etiam eros eros, volutpat vitae velit id!
+        </ion-col>
+      </ion-row>
+      <ion-row class="comment">
+        <ion-col>
+          <strong>
+            Marty
+          </strong> cras a elit eu quam consectetur pretium ... etiam eros eros, volutpat vitae velit id!
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col col-auto>
+
+          <button ion-button
+                  color="dark"
+                  clear
+                  small>
+            <ion-icon name="heart"></ion-icon>
+          </button>
+
+        </ion-col>
+        <ion-col col-auto>
+          <button ion-button
+                  color="dark"
+                  clear
+                  small>
+            <ion-icon name="text"></ion-icon>
+          </button>
+        </ion-col>
+        <ion-col col-auto>
+          <button ion-button
+                  color="dark"
+                  clear
+                  small>
+            <ion-icon name="paper-plane"></ion-icon>
+
+          </button>
+        </ion-col>
+        <ion-col>
+          &nbsp;
+        </ion-col>
+        <ion-col col-auto>
+          <button ion-button
+                  color="dark"
+                  clear
+                  small>
+            <ion-icon name="bookmark"></ion-icon>
+          </button>
+        </ion-col>
+
+      </ion-row>
+
+    </ion-card>
+
+  </autoplay-content>
+
 </ion-content>
